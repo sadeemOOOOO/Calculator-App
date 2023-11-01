@@ -12,10 +12,11 @@ The purpose of this is to provide a detailed description of the Calculator App, 
 
 ## Table of Contents
 
-* [Features]()
-* [Prerequisites]()
-* [Installation]()
-* [Usage]()
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+  
 ## Features
 
 - **Basic Calculations:** Addition, subtraction, multiplication, and division.
@@ -32,6 +33,7 @@ The purpose of this is to provide a detailed description of the Calculator App, 
 * Python 3.11
 * Matplotlib Library
 * Tkinter Library
+
 ## Installation
 
 1. Ensure you have Python 3.x (3.11) installed on your machine.
