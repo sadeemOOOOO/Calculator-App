@@ -1,4 +1,4 @@
-# calculator-app
+# Calculator-App
 
 ## Graphing Calculator
 This repository contains a Graphing Calculator GUI implemented using Tkinter and Matplotlib in Python.
