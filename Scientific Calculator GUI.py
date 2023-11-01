@@ -1,3 +1,7 @@
+"""
+Authors: Sadeem, Lamar, Farah
+"""
+
 import tkinter as tk
 import math
 
