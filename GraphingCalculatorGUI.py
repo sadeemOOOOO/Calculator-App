@@ -9,6 +9,32 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
 canvas_widget = None
+memory = 0
+
+
+def memory_add():
+    global memory
+    try:
+        memory += eval(entry_var.get())
+    except Exception as e:
+        entry_var.set("Error")
+
+
+def memory_subtract():
+    global memory
+    try:
+        memory -= eval(entry_var.get())
+    except Exception as e:
+        entry_var.set("Error")
+
+
+def memory_recall():
+    entry_var.set(str(memory))
+
+
+def memory_clear():
+    global memory
+    memory = 0
 
 
 def on_button_click(character):
@@ -82,8 +108,10 @@ buttons = [
     ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
     ('0', 4, 0), ('(', 4, 1), (')', 4, 2), ('+', 4, 3),
     ('C', 5, 0), ('π', 5, 1), ('e', 5, 2), ('^', 5, 3),
-    ('sin', 6, 0), ('cos', 6, 1), ('tan', 6, 2), ('log', 6, 3),
-    ('ln', 7, 0), ('.', 7, 1), ('x', 7, 2), ('=', 8, 0), ('Del', 7, 3)
+    ('M+', 6, 0), ('M-', 6, 1), ('MR', 6, 2), ('MC', 6, 3),
+    ('sin', 7, 0), ('cos', 7, 1), ('tan', 7, 2), ('log', 7, 3),
+    ('ln', 8, 0), ('.', 8, 1), ('x', 8, 2), ('=', 8, 3),
+    ('Del', 9, 0)
 ]
 
 for (text, row, col) in buttons:
@@ -91,6 +119,14 @@ for (text, row, col) in buttons:
         btn = tk.Button(root, text=text, padx=20, pady=20, command=evaluate_expression)
     elif text == 'C':
         btn = tk.Button(root, text=text, padx=20, pady=20, command=clear_entry)
+    elif text == 'M+':
+        btn = tk.Button(root, text=text, padx=20, pady=20, command=memory_add)
+    elif text == 'M-':
+        btn = tk.Button(root, text=text, padx=20, pady=20, command=memory_subtract)
+    elif text == 'MR':
+        btn = tk.Button(root, text=text, padx=20, pady=20, command=memory_recall)
+    elif text == 'MC':
+        btn = tk.Button(root, text=text, padx=20, pady=20, command=memory_clear)
     elif text == 'Del':
         btn = tk.Button(root, text=text, padx=20, pady=20, command=delete_last_character)
     else:
@@ -98,20 +134,20 @@ for (text, row, col) in buttons:
     btn.grid(row=row, column=col, sticky='nsew')
 
 
-for i in range(4):
+for i in range(6):
     root.grid_columnconfigure(i, weight=1)
     root.grid_rowconfigure(i + 1, weight=1)
 
 plot_btn = tk.Button(root, text="Plot", padx=20, pady=20, command=plot_graph)
-plot_btn.grid(row=9, column=0, columnspan=4, sticky='nsew')
+plot_btn.grid(row=10, column=0, columnspan=4, sticky='nsew')
 
 history_label = tk.Label(root, text="History", font=('Arial', 16))
-history_label.grid(row=10, column=0, columnspan=4, sticky='nsew')
+history_label.grid(row=11, column=0, columnspan=4, sticky='nsew')
 
 history = tk.Listbox(root, height=5, font=('Arial', 12))
-history.grid(row=11, column=0, columnspan=4, sticky='nsew')
+history.grid(row=12, column=0, columnspan=4, sticky='nsew')
 
-for i in range(5):
+for i in range(7):
     root.grid_rowconfigure(i + 8, weight=1)
 
 root.mainloop()
